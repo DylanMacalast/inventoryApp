@@ -3,3 +3,4 @@ vendor
 .idea
 .editorconfig
 phpunit.xml
+note.md
