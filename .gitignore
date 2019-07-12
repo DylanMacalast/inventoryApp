@@ -3,4 +3,4 @@ vendor
 .idea
 .editorconfig
 phpunit.xml
-notes
+znotes
