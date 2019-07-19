@@ -9,14 +9,14 @@ use \App\Includes\Config\Database;
 class BaseModel
 {
     // Select all
-    public function findAll($sql) {
+    public static function findAll($sql) {
         $req = Database::initDatabase()->prepare($sql);
         $req->execute();
         return($req->fetchAll());
     }
 
     // Select single based on id
-    public function findSingleBase($sql) {
+    public static function findSingleBase($sql) {
         $req = Database::initDatabase()->prepare($sql);
         $req->execute();
         return($req->fetch());

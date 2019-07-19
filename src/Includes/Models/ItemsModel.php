@@ -13,6 +13,8 @@ class ItemsModel extends BaseModel
                     * 
                 FROM 
                     Items
+                WHERE 
+                    State = "ACTIVE"
                 ';
         return parent::findAll($sql);
     }
@@ -26,11 +28,11 @@ class ItemsModel extends BaseModel
                     Items
                 WHERE
                     id = $id
+                AND
+                    State = 'ACTIVE'
                 ";
         return parent::findSingleBase($sql);
     }
    
 }
 
-$test = new ItemsModel();
-print_r($test->find());
