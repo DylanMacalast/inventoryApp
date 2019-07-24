@@ -13,7 +13,7 @@ class Database
     public static function initDatabase()  {
         if(is_null(self::$databaseHandler)){
             try{
-                self::$databaseHandler = new \PDO("mysql:host=localhost;dbname=pizza_inventory", 'root', 'root');
+                self::$databaseHandler = new \PDO("mysql:host=localhost:8889;dbname=pizza_inventory", 'root', 'root');
                 self::$databaseHandler->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
             } catch(\PDOException $e){
                 throw new \PDOException ($e->getMessage());
