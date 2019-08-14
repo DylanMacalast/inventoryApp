@@ -1,45 +1,28 @@
 <?php
+
 namespace App\Includes\Controllers;
-require __DIR__ .'/../Config/Bootstrap.php';
+
+require __DIR__ . '/../Config/Bootstrap.php';
+
 use \App\Includes\Models\ItemsModel;
 
+// Look into using dependency injection here to use the ItemsModel
+// You dont fully understand it yet however it might be perfect for this issue
 
-class ItemsController 
+class ItemsController
 {
-    public $itemsArr = [];
-    
-
-
-    private function setItems()
-    {
-        $model = new ItemsModel();
-        $data = $model->find();
-        $count = sizeof($data);
-
-        for ($i = 0; $i < $count; $i++){
-                
-            $newItem = $data[$i];
-            array_push($this->itemsArr, $newItem);
-        }
-    }
+    public $itemsArr;
 
     /**
-     * @return array contiaing each items values as an array
+     * @return itemsArr
+     * sets the array from the ItemsModels find method to a property
+     * and return it
      */
-    public function getItems()
+    public function setItemsArray()
     {
-        $this->setItems();
-        return $this->itemsArr;
+        $model = new ItemsModel();
+       return $this->itemsArr = $model->find();
+
     }
 
-  
 }
-
-
-
-
-
-
-
-
-

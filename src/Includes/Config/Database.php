@@ -6,9 +6,6 @@ class Database
 {
     private static $databaseHandler = null;
 
-    private function __contstruct() {
-
-    }
 
     public static function initDatabase()  {
         if(is_null(self::$databaseHandler)){

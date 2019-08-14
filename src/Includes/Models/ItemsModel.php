@@ -7,6 +7,7 @@ use \App\Includes\Models\BaseModel as BaseModel;
 
 class ItemsModel extends BaseModel
 {
+    
     public function find(){
         $sql = '
                 SELECT
@@ -19,7 +20,7 @@ class ItemsModel extends BaseModel
         return parent::findAll($sql);
     }
 
-    public function findSingle($id)
+    public function findSingle($queryId)
     {
         $sql = "
                 SELECT
@@ -27,7 +28,7 @@ class ItemsModel extends BaseModel
                 FROM
                     Items
                 WHERE
-                    id = $id
+                    id = $queryId
                 AND
                     State = 'ACTIVE'
                 ";
@@ -35,4 +36,3 @@ class ItemsModel extends BaseModel
     }
    
 }
-

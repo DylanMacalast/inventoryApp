@@ -19,12 +19,12 @@ class ItemsView
 public static function renderItems()
 {
     $itemCntrl = new ItemsController();
-    $arr = $itemCntrl->getItems();
+    $arr = $itemCntrl->setItemsArray();
     $html = '';
-    foreach ($arr as $key => $value) {
+    foreach ($arr as $value) {
 
         $name = $value['Name'];
-        $ID = $value['ID'];
+        $id= $value['ID'];
         $category = $value['Category'];
         $price = $value['Price'];
 
@@ -32,7 +32,7 @@ public static function renderItems()
         <div class='items__container'>
         <hr><hr><hr><hr><hr></br><hr><hr><hr><hr><hr></br>
             <div class='item__$category'>
-                <h1>$ID</h1>
+                <h1>$id</h1>
                 <hr>
                 <h1>$name</h1>
                 <hr>
