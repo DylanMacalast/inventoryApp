@@ -1,38 +1,60 @@
 <?php
+
 namespace App\Includes\Models;
 require __DIR__ .'/../Config/Bootstrap.php';
-use \App\Includes\Models\BaseModel as BaseModel;
 
 
+/**
+ * This class will act as the model for the system
+ */
 
-class ItemsModel extends BaseModel
+//  the database class
+class BaseModel
 {
-    
-    public function find(){
-        $sql = '
-                SELECT
-                    * 
-                FROM 
-                    Items
-                WHERE 
-                    State = "ACTIVE"
-                ';
-        return parent::findAll($sql);
-    }
+    // Properties
+    private $conn;
+    private $table_name = "items";
 
-    public function findSingle($queryId)
+    //constructor to instanciate the database object
+    // when we instanciate this class we need to pass in the database object
+    public function __construct($db)
     {
-        $sql = "
-                SELECT
-                    *
-                FROM
-                    Items
-                WHERE
-                    id = $queryId
-                AND
-                    State = 'ACTIVE'
-                ";
-        return parent::findSingleBase($sql);
+        $this->conn = $db;
     }
-   
+    /**
+     * Method to Read all data from database table
+     * This will be generic for front end and mangagement
+     */
+    public function read()
+    {
+        $query = "SELECT * FROM " . $this->table_name . " ORDER BY ASC";
+
+        //prepare query
+        $stmt = $this->conn->prepare($query);
+
+        //execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+    
+
+
+
+    /**
+     * Method to Update a row in a table
+     */
+
+
+
+    /**
+     * Method to Insert row into table
+     */
+
+
+    /**
+    * Method to Delete Row from table
+    */
+
+
 }
