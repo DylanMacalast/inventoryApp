@@ -1,7 +1,10 @@
-<?php require "./Includes/header.php"; ?>
 <?php
+require "./Includes/header.php";
+require __DIR__ .'/../Config/Bootstrap.php';
 // get the controller here and save it to a variable to be used within this view
-
+use \App\management\Controllers\ItemsController as ItemsController;
+$pageHelper = new ItemsController();
+$pageHelper->processPageRequest();
 ?>
 	<h1>Management Read All Items</h1>
 	<section class="controls">
@@ -20,14 +23,16 @@
 			</thead>
 			<tbody>
 			<!-- PHP will loop through data and produce this format for each item -->
+			<?php foreach($pageHelper->itemsArray as $item) : ?>
 				<tr>
-					<td><h3>Cake</h3></td>
-					<td>£23</td>
-					<td>23</th>
-					<td><a href="update_item.php?id=<?php echo 3; ?>" class="btn btn-success">Edit</a></td>
-					<td><a href="delete_item.php?id=<?php echo 3; ?>" class="btn btn-danger">Delete</a></td>
+					<td><h3><?=$item['name'];?></h3></td>
+					<td><?=$item['price'];?></td>
+					<td><?=$item['amount'];?></th>
+					<td><a href="update_item.php?update=<?=$item['id']; ?>" class="btn btn-success">Edit</a></td>
+					<td><a href="delete_item.php?delete=<?=$item['id']; ?>" class="btn btn-danger">Delete</a></td>
 				</tr>
 				<!-- End loop -->
+            <?php endforeach; ?>
 			</tbody>
 		</table>
 	</section>

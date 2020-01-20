@@ -1,4 +1,9 @@
-<?php phpinfo(); ?>
+<?php
+require __DIR__ .'/Config/Bootstrap.php';
+use \App\management\Controllers\ItemsController as ItemsController;
+$pageHelper = new ItemsController();
+$pageHelper->processPageRequest();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +14,19 @@
     <link rel="stylesheet" type="text/css" href="./Includes/css/style.css">
     <title>Home Page</title>
 </head>
-<body>
+<body class="row">
+   <section class="items col-6">
     <h1>Till Application</h1>
-   <section class="items">
+   <?php foreach($pageHelper->itemsArray as $item) : ?>
         <div class="items__card">
-            <h1>Item Name: Name</h1>
-            <h3>Item Price: £23</h3>
-            <h4>Item Amount: 49</h4>
+            <h2><?=$item['name'];?></h2>
+            <h3>Price: £<?=$item['price'];?></h3>
+            <h4><?=$item['amount'];?> Remaining</h4>
         </div>
+        <br>
+   <?php endforeach; ?>
    </section> 
-   <section class="calculator float-right">
+   <section class="calculator float-right col-6">
     <h1>Calculating Order</h1>
     <p>order stuff</p>
     <h4>Total: 333</h4>

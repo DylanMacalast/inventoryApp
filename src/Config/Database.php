@@ -1,13 +1,18 @@
 <?php
 // Connecting to the database
 // We want a way for this class to be instanciated within each model
-namespace App\config;
+namespace App\Config;
 class Database
 {
     private $host = 'localhost';
     private $db_name = 'inventory';
-    private $username = 'dylanm';
-    private $password = '';
+    //linux db details
+    //private $username = 'dylanm';
+    //private $password = '';
+
+    // mac db details
+    private $username = 'root';
+    private $password = 'Xosurk36';
     public $conn;
 
     // get database connection
@@ -26,7 +31,6 @@ class Database
 
        }
 
-       var_dump($this->conn);
        return $this->conn;
 
     }
