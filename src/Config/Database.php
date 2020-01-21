@@ -7,12 +7,12 @@ class Database
     private $host = 'localhost';
     private $db_name = 'inventory';
     //linux db details
-    //private $username = 'dylanm';
-    //private $password = '';
+    private $username = 'dylanm';
+    private $password = '';
 
     // mac db details
-    private $username = 'root';
-    private $password = 'Xosurk36';
+    // private $username = 'root';
+    // private $password = 'Xosurk36';
     public $conn;
 
     // get database connection
