@@ -15,21 +15,25 @@ $pageHelper->processPageRequest();
     <title>Home Page</title>
 </head>
 <body class="row">
-   <section class="items col-4">
+   <section class="items col-7">
     <h1>Till Application</h1>
+        <div class="row">
    <?php foreach($pageHelper->itemsArray as $item) : ?>
-        <div class="items__card" id="item-<?=$item['id']; ?>">
-            <h2><?=$item['name'];?></h2>
-            <h3>Price: £<?=$item['price'];?></h3>
-            <h4><?=$item['amount'];?> Remaining</h4>
-        </div>
-        <br>
+            <div class="items__card col-5 m-1" id="item-<?=$item['id']; ?>">
+                <h2><?=$item['name'];?></h2>
+                <h3 id="<?=$item['price'];?>">Price: £<?=$item['price'];?></h3>
+                <h4><?=$item['amount'];?> Remaining</h4>
+            </div>
+            <br>
    <?php endforeach; ?>
+        </div>
    </section> 
-   <section class="calculator float-right col-4">
+   <section class="calculator col-4">
     <h1>Calculating Order</h1>
     <p>order stuff</p>
-    <h4>Total: 333</h4>
+    <h4 id="total">Total: 0</h4>
+    <button id="pay" class="btn btn-primary mr-5">PAY</button>
+    <button id="cancel" class="btn btn-warning">CANCEL</button>
    </section>
 <script src="./Includes/js/index.js" rel="text/javascript"></script>
 </body>
